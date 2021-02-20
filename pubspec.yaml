@@ -29,7 +29,8 @@ dependencies:
   url_launcher: ^5.7.10
 
   services:
-    path: "../services"
+    git:
+      url: git://github.com/bynicodevelop/stories-services.git
 
 
   # The following adds the Cupertino Icons font to your application.

@@ -1,0 +1,44 @@
+name: Build, Release app to Github Pages and Firebase Hosting
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-java@v1
+        with:
+          java-version: '12.x'
+      - uses: subosito/flutter-action@v1
+        with:
+          channel: 'dev'
+
+      - name: 'Run flutter pub get'
+        run: flutter pub get
+
+      - name: Enable flutter web
+        run: flutter config --enable-web
+
+      - name: Create index.html file
+        id: index
+        uses: timheuer/base64-to-file@v1
+        with:
+          fileName: "index.html"
+          encodedString: ${{ secrets.INDEX }}
+
+      - name: Move index.html into project
+        run: |
+          mv ${{ steps.index.outputs.filePath }} ./web/
+
+      - name: 'Build Web App'
+        run: flutter build web
+
+      - name: Deploy to Firebase Hosting
+        uses: w9jds/firebase-action@master
+        with:
+          args: deploy --only hosting
+        env:
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }} 

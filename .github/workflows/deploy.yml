@@ -16,11 +16,14 @@ jobs:
         with:
           channel: 'dev'
 
-      - name: 'Run flutter pub get'
-        run: flutter pub get
-
       - name: Enable flutter web
         run: flutter config --enable-web
+        
+      - name: Enable flutter web
+        run: flutter clean
+
+      - name: 'Run flutter pub get'
+        run: flutter pub get
 
       - name: Create index.html file
         id: index

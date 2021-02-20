@@ -36,6 +36,17 @@ jobs:
         run: |
           mv ${{ steps.index.outputs.filePath }} ./web/
 
+      - name: Create .firebaserc file
+        id: firebaserc
+        uses: timheuer/base64-to-file@v1
+        with:
+          fileName: ".firebaserc"
+          encodedString: ${{ secrets.FIREBASERC }}
+
+      - name: Move .firebaserc into project
+        run: |
+          mv ${{ steps.firebaserc.outputs.filePath }} ./
+
       - name: 'Build Web App'
         run: flutter build web
 

@@ -20,7 +20,9 @@ class App extends StatelessWidget {
       theme: ThemeData(
         textTheme: TextTheme(
           headline1: GoogleFonts.nunitoSans(),
-          bodyText1: GoogleFonts.nunitoSans().copyWith(),
+          bodyText1: GoogleFonts.nunitoSans().copyWith(
+            fontSize: 16,
+          ),
         ),
       ),
       home: Home(),

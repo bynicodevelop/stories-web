@@ -27,7 +27,9 @@ class Home extends StatelessWidget {
                   ),
                   child: Text(
                     'Stories',
-                    style: Theme.of(context).textTheme.headline1,
+                    style: Theme.of(context).textTheme.headline1.copyWith(
+                          fontSize: 50.0,
+                        ),
                     textAlign: TextAlign.center,
                   ),
                 ),
@@ -46,7 +48,7 @@ class Home extends StatelessWidget {
                     bottom: 5.0,
                   ),
                   child: Text(
-                    "Mais bonne nouvelle, vous pouvez avoir un avant good en téléchargent l'application de lancement.",
+                    "Mais bonne nouvelle, vous pouvez avoir un avant goût en téléchargent l'application de lancement.",
                     style: Theme.of(context).textTheme.bodyText1,
                     textAlign: TextAlign.center,
                   ),
@@ -56,7 +58,7 @@ class Home extends StatelessWidget {
                     bottom: 5.0,
                   ),
                   child: Text(
-                    "Rejoignez-nous dans cette aventure en cliquant sur le bouton juste en dessous.",
+                    "Rejoignez-nous dans cette aventure, et suivez l'évolution de Stories, en cliquant sur le bouton juste en dessous.",
                     style: Theme.of(context).textTheme.bodyText1,
                     textAlign: TextAlign.center,
                   ),
@@ -70,10 +72,24 @@ class Home extends StatelessWidget {
                       child: Image.asset(
                         'assets/images/play-store.png',
                       ),
-                      onTap: () => launch('#'),
+                      onTap: () => launch(
+                          'https://play.google.com/store/apps/details?id=fans.stories.app'),
                     ),
                   ),
-                )
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(
+                    bottom: 5.0,
+                  ),
+                  child: Text(
+                    "Seulement 1 000 téléchargements sont disponibles, alors dépêchez-vous...",
+                    style: Theme.of(context).textTheme.bodyText1.copyWith(
+                          fontStyle: FontStyle.italic,
+                          fontSize: 12,
+                        ),
+                    textAlign: TextAlign.center,
+                  ),
+                ),
               ],
             ),
           ),
